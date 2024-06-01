@@ -1,0 +1,13 @@
+.orderList {
+    border: 2px solid #000;
+    padding: 15px;
+    position: relative;
+
+    h3 {
+        position: absolute;
+        top: -31px;
+        left: 30px;
+        background: #fff;
+        padding: 0 2px;
+    }
+}

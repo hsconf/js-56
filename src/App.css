@@ -4,3 +4,25 @@
   padding: 2rem;
   text-align: center;
 }
+
+.container {
+  display: flex;
+  gap: 30px;
+}
+
+.menu-right {
+  border: 2px solid #000;
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  h3 {
+    position: absolute;
+    top: -31px;
+    left: 30px;
+    background: #fff;
+    padding: 0 2px;
+  }
+}

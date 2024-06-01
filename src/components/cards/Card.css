@@ -1,0 +1,32 @@
+.card {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 46%;
+}
+
+.card-img {
+    width: 85px;
+    height: 85px;
+    margin: auto 0;
+}
+
+.card-name {
+    h5 {
+        font-size: 50px;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    span {
+        font-size: 20px;
+        font-weight: 800;
+    }
+}
