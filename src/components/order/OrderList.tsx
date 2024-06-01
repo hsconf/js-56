@@ -1,11 +1,20 @@
 import './OrderList.css';
+import React from "react";
 
-const OrderList = () => {
+interface Props {
+    name: string,
+    total: number,
+    quantity: number,
+    remove: () => void
+}
+
+const OrderList: React.FC<Props> = ({name, quantity, total, remove}) => {
     return (
         <div className="orderList">
-            <h3>Order Details:</h3>
-            <p>lorem ipsum dolor</p>
-            <p>lorem ipsum dolor Lorem ipsum dolor sit amet.</p>
+            <p>{name}</p>
+            <span>x{quantity}</span>
+            <b>{total} KGS</b>
+            <button onClick={remove}>Remove</button>
         </div>
     );
 };

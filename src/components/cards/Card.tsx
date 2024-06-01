@@ -9,14 +9,13 @@ interface Props {
     onClickMe: () => void
 }
 
-const Card: React.FC<Props> = ({img, name, price, onClickMe, id}) => {
+const Card: React.FC<Props> = ({img, name, price, onClickMe,}) => {
     return (
         <div className="card" onClick={onClickMe}>
             <img src={img} alt={name} className="card-img" />
             <div className="card-name">
                 <h5>{name}</h5>
                 <p>Price: <span>{price} KGS</span></p>
-                <span>{id}</span>
             </div>
         </div>
     );

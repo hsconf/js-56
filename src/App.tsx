@@ -13,7 +13,8 @@ const App = () => {
 
     interface orderItem {
         name: string,
-        price: number
+        price: number,
+        quantity: number
     }
 
     const menuArray = [
@@ -23,29 +24,48 @@ const App = () => {
         {img: coffee, name: 'Coffee', price: 70, id: 40},
         {img: potato, name: 'Potato', price: 45, id: 50},
         {img: tea, name: 'Tea', price: 50, id: 60},
-
     ];
 
     const [order, setOrder] = React.useState<orderItem[]>([]);
 
     const click = (name: string, price: number) => {
-        const item = { name, price };
-        setOrder((prevOrder) => [...prevOrder, item]);
+        const existingIndex = order.findIndex((item) => item.name === name);
+        if (existingIndex !== -1) {
+            const updatedOrder = [...order];
+            updatedOrder[existingIndex].quantity++;
+            setOrder(updatedOrder);
+        } else {
+            const newItem = { name, price, quantity: 1 };
+            setOrder((prevOrder) => [...prevOrder, newItem]);
+        }
     };
-    console.log(order);
+
+    const calculateTotal = () => {
+        return order.reduce((total, item) => total + item.price * item.quantity, 0);
+    };
+
+    const remove = (name: string) => {
+        const updated = order.filter(item => item.name !== name);
+        setOrder(updated)
+    };
+
     return (
-        <>
         <div className="container">
-            <OrderList/>
-            <div className="menu-right">
+            <div className="menu left-menu">
+                <h3>Order Details:</h3>
+                {order.map((item, index) => (
+                    <OrderList remove={() => remove(item.name)} key={index} name={item.name} quantity={item.quantity} total={item.price * item.quantity} />
+                ))}
+                <div>Total: {calculateTotal()}</div>
+            </div>
+            <div className="menu right-menu">
                 <h3>Add items:</h3>
                 {menuArray.map((item) => (
                     <Card onClickMe={() => click(item.name, item.price)} key={item.id} img={item.img} name={item.name} price={item.price} id={item.id} />
                 ))}
             </div>
         </div>
-    </>
-    )
+    );
 };
 
-export default App
+export default App;
