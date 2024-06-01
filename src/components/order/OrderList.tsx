@@ -13,7 +13,7 @@ const OrderList: React.FC<Props> = ({name, quantity, total, remove}) => {
         <div className="orderList">
             <p>{name}</p>
             <span>x{quantity}</span>
-            <b>{total} KGS</b>
+            <strong>{total} KGS</strong>
             <button onClick={remove}>Remove</button>
         </div>
     );

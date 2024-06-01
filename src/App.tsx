@@ -53,15 +53,22 @@ const App = () => {
         <div className="container">
             <div className="menu left-menu">
                 <h3>Order Details:</h3>
-                {order.map((item, index) => (
-                    <OrderList remove={() => remove(item.name)} key={index} name={item.name} quantity={item.quantity} total={item.price * item.quantity} />
-                ))}
+                {order.length > 0 ? (
+                    order.map((item, index) => (
+                        <OrderList remove={() => remove(item.name)} key={index} name={item.name}
+                                   quantity={item.quantity} total={item.price * item.quantity}/>
+                    ))
+                ) : (
+                    <div>Empty</div>
+                )}
                 <div>Total: {calculateTotal()}</div>
             </div>
+
             <div className="menu right-menu">
                 <h3>Add items:</h3>
                 {menuArray.map((item) => (
-                    <Card onClickMe={() => click(item.name, item.price)} key={item.id} img={item.img} name={item.name} price={item.price} id={item.id} />
+                    <Card onClickMe={() => click(item.name, item.price)} key={item.id} img={item.img} name={item.name}
+                          price={item.price} id={item.id}/>
                 ))}
             </div>
         </div>
